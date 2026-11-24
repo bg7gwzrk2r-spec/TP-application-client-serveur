@@ -6,16 +6,16 @@
 -- Un compte MariaDB est le couple (utilisateur, machine d'origine) :
 -- 'etudiant'@'localhost' et 'etudiant'@'192.168.56.%' sont DEUX comptes.
 -- =====================================================================
-DROP USER IF EXISTS 'etudiant'@'192.168.56.%';
-DROP USER IF EXISTS 'secretariat'@'192.168.56.%';
+DROP USER IF EXISTS 'etudiant'@'192.168.50.%';
+DROP USER IF EXISTS 'secretariat'@'192.168.50.%';
 
 -- Consultation seule
-CREATE USER 'etudiant'@'192.168.56.%' IDENTIFIED BY 'Etudiant@2026';
-GRANT SELECT ON scolarite.* TO 'etudiant'@'192.168.56.%';
+CREATE USER 'etudiant'@'192.168.50.%' IDENTIFIED BY 'Etudiant@2026';
+GRANT SELECT ON scolarite.* TO 'etudiant'@'192.168.50.%';
 
 -- Saisie des notes (lecture de toute la base, écriture sur la seule table note)
-CREATE USER 'secretariat'@'192.168.56.%' IDENTIFIED BY 'Secretariat@2026';
-GRANT SELECT ON scolarite.* TO 'secretariat'@'192.168.56.%';
-GRANT INSERT, UPDATE ON scolarite.note TO 'secretariat'@'192.168.56.%';
+CREATE USER 'secretariat'@'192.168.50.%' IDENTIFIED BY 'Secretariat@2026';
+GRANT SELECT ON scolarite.* TO 'secretariat'@'192.168.50.%';
+GRANT INSERT, UPDATE ON scolarite.note TO 'secretariat'@'192.168.50.%';
 
 FLUSH PRIVILEGES;
